@@ -1,0 +1,508 @@
+{% extends 'client/base.html' %}
+<!-- divider  -->
+{% load static %}
+<!-- divider  -->
+{% block content %}
+
+<style>
+  :root {
+    --primary-color: #ed1c24;
+    --secondary-color: #808285;
+    --sub-color: #000000;
+    --sub-titles: #cacaca;
+    --background-color: #e4eaff;
+    --secondary-background: #f7f9fa;
+  }
+
+  /* carousel style  */
+  .carousel-item {
+    height: 70vh;
+  }
+
+  .carousel_content {
+    margin-top: 80px;
+  }
+
+  .carousel_btn {
+    border-radius: 12px;
+  }
+
+  .carousel_btn_more {
+    border-radius: 12px;
+    color: white;
+    background-color: var(--primary-color);
+  }
+
+  .carousel_btn_contact {
+    border-radius: 12px;
+    color: var(--primary-color);
+  }
+
+  .hero_title {
+    font-size: 60px;
+    line-height: 70px;
+    font-weight: 700;
+  }
+
+  .carousel_item_1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('{% static "images/hero.jpg" %}');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .carousel_item_2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('{% static "images/hero2.jpg" %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .carousel_item_3 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('{% static "images/hero3.jpg" %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Team Style  */
+  .team_image {
+    height: 400px;
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Services style  */
+  .serviceBanner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('{% static "images/serviceBanner.jpg" %}');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .service_image {
+    vertical-align: middle;
+    width: 100%;
+    height: 183px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .service_title {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .service_title_border {
+    height: 2px;
+    width: 10%;
+    background-color: var(--primary-color);
+  }
+
+  /* Swiper Css  */
+  .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 400px;
+    margin: 0 2em;
+    border-radius: 12px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
+
+  .swiper-pagination-bullet {
+    background: var(--swiper-pagination-bullet-inactive-color, white);
+  }
+
+  @media screen and (max-width: 576px) {
+    .nav_logo {
+      width: 120px;
+    }
+
+    .carousel-item {
+      height: 50vh !important;
+    }
+
+    .hero_title {
+      font-size: 30px;
+      line-height: 35px;
+      font-weight: 700;
+    }
+
+    .carousel_sub {
+      font-size: 15px;
+    }
+
+    .titles {
+      font-size: 28px;
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      display: none;
+    }
+  }
+</style>
+
+<!-- ======= HERO COMPONENT  ======= -->
+<div
+  id="carouselExampleControls"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active carousel_item_1">
+      <div class="container">
+        <div class="row mx-0">
+          <div class="col-12 col-md-6 carousel_content">
+            <h5 class="text-light hero_title">
+              Innovation. Efficiency. Automation
+            </h5>
+            <p class="text-light carousel_sub">
+              Streamline operations, enhance productivity. Prottolk's automation
+              expertise drives industrial efficiency and excellence.
+            </p>
+            <div class="d-flex mt-5">
+              <a href="{% url 'services' %}">
+                <button
+                  class="btn carousel_btn_more px-md-3 py-md-2"
+                  style="margin-right: 20px"
+                >
+                  Read More
+                </button>
+              </a>
+              <a href="{% url 'contact' %}">
+                <button
+                  class="btn btn-light carousel_btn_contact px-md-3 py-md-2"
+                >
+                  Contact us
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item carousel_item_2">
+      <div class="container">
+        <div class="row mx-0">
+          <div class="col-12 col-md-6 carousel_content">
+            <h5 class="text-light hero_title">
+              Solar Power. Sustainable Solutions.
+            </h5>
+            <p class="text-light carousel_sub">
+              Description: "Unleash renewable power. Prottolk's solar solutions
+              shape a sustainable future."
+            </p>
+            <div class="d-flex mt-5">
+              <a href="{% url 'services' %}">
+                <button
+                  class="btn carousel_btn_more px-md-3 py-md-2"
+                  style="margin-right: 20px"
+                >
+                  Read More
+                </button>
+              </a>
+              <a href="{% url 'contact' %}">
+                <button
+                  class="btn btn-light carousel_btn_contact px-md-3 py-md-2"
+                >
+                  Contact us
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item carousel_item_3">
+      <div class="container">
+        <div class="row mx-0">
+          <div class="col-12 col-md-6 carousel_content">
+            <h5 class="text-light hero_title">
+              Electrical Excellence. Seamless Operations.
+            </h5>
+            <p class="text-light carousel_sub">
+              Power your success. Prottolk's electrical expertise ensures
+              reliability, safety, and smooth operations.
+            </p>
+            <div class="d-flex mt-5">
+              <a href="{% url 'services' %}">
+                <button
+                  class="btn carousel_btn_more px-md-3 py-md-2"
+                  style="margin-right: 20px"
+                >
+                  Read More
+                </button>
+              </a>
+              <a href="{% url 'contact' %}">
+                <button
+                  class="btn btn-light carousel_btn_contact px-md-3 py-md-2"
+                >
+                  Contact us
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- ======= About us  ======= -->
+<div class="bannerBackground">
+  <div class="container mt-5 py-5">
+    <h6 class="sub_titles" data-aos="fade-up">ABOUT OUR COMPANY</h6>
+    <h3 class="titles my-3">
+      <span class="text_deco">Prottolk</span> : Enhancing Industrial Efficiency
+      and Safety with Automation Solutions.
+    </h3>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        <p class="d-none d-md-block">
+          Prottolk is a total turnkey solution supplier aimed at improving the
+          efficiency and safety of industrial plants through plant automation.
+          The company is able to supply, install, and commission projects.
+        </p>
+        <p class="d-none d-md-block">
+          The company offers after sales support for new and existing automation
+          installations, through preventative maintenance, specialized customer
+          training and technical support for Variable Speed Drives (VSD’s),
+          Programmable Logic Circuits (PLC’s), Solar Inverters and Low Voltage
+          (LV) and Medium Voltage (MV) Switchgears.
+        </p>
+
+        <!-- small screen about  -->
+        <p class="d-sm-block d-md-none">
+          Prottolk offers complete industrial plant automation solutions to
+          improve efficiency and safety. We handle supply, installation,
+          commissioning, and provide after-sales support for VSDs, PLCs, Solar
+          Inverters, and LV/MV Switchgears. Our expertise spans multiple
+          industries including Mining, Power Generation, Solar Energy, FMCG, and
+          Water.
+        </p>
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <p class="d-none d-md-block">
+          Using valuable experience gained in Service engineering, Sales, and
+          Product Management, Prottolk can provide technical and commercial
+          solution-based assistance in the Mining, Power Generation, Solar
+          Energy, FMCG, and Water Industries.
+        </p>
+        <div class="d-flex">
+          <i class="bi bi-person-circle works_icons"></i>
+          <p>Permanent Staff: 9 (7 Technicians)</p>
+        </div>
+        <div class="d-flex">
+          <i class="bi bi-person-circle works_icons"></i>
+          <p>Temporary Staff 12 (7 Electricians & 5 Artisans)</p>
+        </div>
+
+        <!-- small screen about btn  -->
+        <a href="/about.html" class="d-sm-block d-md-none">
+          <button
+            class="btn carousel_btn carousel_btn_more px-md-3 py-md-2 mt-3"
+          >
+            Read More About us
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Our Team  ======= -->
+<div class="container mt-5">
+  <h6 class="sub_titles">OUR TEAM</h6>
+  <div class="row">
+    <div
+      class="col-12 col-md-6 mb-3"
+      data-aos="fade-right"
+      style="overflow: hidden"
+    >
+      <h3 class="titles">
+        Our Proactive Team Redefining
+        <span class="titles_span">Industrial Automation.</span>
+      </h3>
+      <a href="{% url 'about' %}" class="d-none d-md-block">
+        <button class="btn carousel_btn carousel_btn_more px-md-3 py-md-2">
+          Read More
+        </button>
+      </a>
+    </div>
+    <div class="col-12 col-md-6 mb-5">
+      <img
+        src="{% static '/images/team.jpeg' %}"
+        alt="Prottolk"
+        class="team_image"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- ======= Services  ======= -->
+<div class="serviceBanner my-5 py-5">
+  <div class="container">
+    <div class="text-center">
+      <h6 class="sub_titles text-white">OUR SERVICES</h6>
+      <h3 class="titles my-3 text-white">
+        High Performance Services
+        <span class="text_deco">For Multiple Industries</span>
+      </h3>
+    </div>
+  </div>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {% for data in summarisedService %}
+      <div class="swiper-slide bg-white p-3">
+        <img
+          src="{{data.image.url}}"
+          class="service_image"
+          loading="lazy"
+          alt="Prottolk services"
+        />
+        <h5 class="service_title">{{data.title}}</h5>
+        <div class="service_title_border mb-3"></div>
+        <p class="card-text text-secondary">{{data.description}}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <center>
+    <a href="{% url 'services' %}">
+      <button class="btn carousel_btn carousel_btn_more py-md-2 px-5">
+        Show all Services
+      </button>
+    </a>
+  </center>
+</div>
+
+<!-- ======= Supply  ======= -->
+<div class="container mt-5">
+  <center>
+    <h3 class="titles my-3">Automation & System Intergration</h3>
+    <p class="text-secondary">
+      Delivering Equipment and Value-Added Services: Prottolk's Solutions for
+      Industrial Excellence
+    </p>
+  </center>
+
+  <div class="mt-5">
+    <div class="row">
+      <div
+        class="col-12 col-md-6 col-6 mb-5"
+        data-aos="fade-up-right"
+        style="overflow: hidden"
+      >
+        <h4 class="sub_titles text-danger fw-bold mb-3">
+          Variable Speed Drive
+        </h4>
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Application Design and Sizing</p>
+        </div>
+        <!-- end list item  -->
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Preventative and Predictive Maintenance</p>
+        </div>
+        <!-- end list item  -->
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>After Sales Support</p>
+        </div>
+        <!-- end list item  -->
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Crane Drives Specialists</p>
+        </div>
+        <!-- end list item  -->
+      </div>
+
+      <div
+        class="col-12 col-md-6 col-6 mb-5"
+        data-aos="fade-up-left"
+        style="overflow: hidden"
+      >
+        <h4 class="sub_titles text-danger fw-bold mb-3">Solar Inverters</h4>
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Preventative and Predictive Maintenance</p>
+        </div>
+        <!-- end list item  -->
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Installation of Solar Panels</p>
+        </div>
+        <!-- end list item  -->
+        <div class="d-flex">
+          <i
+            class="bi bi-check-circle-fill text-danger"
+            style="margin-right: 20px"
+          ></i>
+          <p>Installation & Commissioning of Solar Inverter</p>
+        </div>
+        <!-- end list item  -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Contact  ======= -->
+<div class="bannerBackground">{% include 'partials/contact.html' %}</div>
+
+<!-- divider  -->
+{% endblock %}
